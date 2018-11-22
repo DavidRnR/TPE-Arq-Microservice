@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cacic.microservice.entities.Work;
-import com.cacic.microservice.interfaces.IWorkService;
+import com.cacic.microservice.interfaces.IUserService;
 
 @RestController
 @RequestMapping("user")
 public class RESTController {
 	
 	@Autowired
-	private IWorkService workService;
+	private IUserService workService;
 	
 	@GetMapping("getWorksSendedbyAutor/{id}")
 	public ResponseEntity<List<Work>> getWorksSendedbyAutor(@PathVariable("id") Integer id){

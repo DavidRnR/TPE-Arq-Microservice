@@ -7,15 +7,23 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@NamedQuery(name = Work.FIND_ALL, query="SELECT w FROM Work w")
 
 @Entity
 @Table(name="work")
 public class Work {
+	
+	public static final String FIND_ALL = "Work.findAll";
 	
 	@Id
 	@GeneratedValue
@@ -29,6 +37,9 @@ public class Work {
 	
 	@JsonIgnore
 	@ManyToMany
+	@JoinTable(name = "work_keyword",
+	joinColumns = @JoinColumn(name = "work_id"), 
+	inverseJoinColumns = @JoinColumn(name = "keyword_id"))
 	private List<KeyWord> keyWords;
 		
 	public Work() {}

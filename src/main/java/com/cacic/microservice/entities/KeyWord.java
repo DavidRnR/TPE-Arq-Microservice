@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -23,12 +24,16 @@ public class KeyWord {
 	
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "keyword_user")
+	@JoinTable(name = "user_keyword",
+	  joinColumns = @JoinColumn(name = "keyword_id"), 
+     inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
 	
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "keyword_work")
+	@JoinTable(name = "work_keyword",
+			   joinColumns = @JoinColumn(name = "work_id"), 
+		       inverseJoinColumns = @JoinColumn(name = "keyword_id"))
 	private List<Work> articles;
 	
 	public KeyWord() {}

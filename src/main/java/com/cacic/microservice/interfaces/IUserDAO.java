@@ -1,7 +1,8 @@
 package com.cacic.microservice.interfaces;
 
-import com.cacic.microservice.entities.User;
+import java.util.List;
+import com.cacic.microservice.entities.Work;
 
 public interface IUserDAO {
-	User finbById(Integer id);
+	List<Work> findAllWorksSendedbyAutor(Integer userId);
 }
