@@ -13,18 +13,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NamedQuery;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@NamedQuery(name = Work.FIND_ALL, query="SELECT w FROM Work w")
 
 @Entity
 @Table(name="work")
 public class Work {
-	
-	public static final String FIND_ALL = "Work.findAll";
-	
+		
 	@Id
 	@GeneratedValue
 	private int id;
