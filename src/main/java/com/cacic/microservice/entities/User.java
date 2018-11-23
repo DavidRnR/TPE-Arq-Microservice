@@ -30,7 +30,9 @@ public class User {
 	private boolean expert;
 
 	@ManyToMany 
-	@JoinTable(name = "user_role")
+	@JoinTable(name = "user_role",
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 	@ManyToMany
 	@JoinTable(name = "user_keyword",
